@@ -1,0 +1,838 @@
+/*
+========================================================
+ANA VESTE - BOUTIQUE VINTAGE
+CSS ORGANIZADO E OTIMIZADO
+========================================================
+*/
+
+/* =========================
+   VARIÁVEIS
+========================= */
+:root {
+    --primary: #8B4513;
+    --secondary: #D2B48C;
+    --accent: #556B2F;
+
+    --bg-light: #FDFBF7;
+    --bg-dark: #1A1A1A;
+
+    --text-main: #222222;
+    --text-muted: #666666;
+    --text-light: #FFFFFF;
+
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    --container-width: 1200px;
+
+    --transition: all 0.35s ease;
+}
+
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+    background: rgba(253, 251, 247, 0.97);
+    backdrop-filter: blur(8px);
+
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    min-height: 82px;
+}
+
+.logo img {
+    height: 76px;
+    object-fit: contain;
+}
+
+/* =========================
+   MENU
+========================= */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    font-size: 0.76rem;
+    font-weight: 500;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    color: var(--text-main);
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* =========================
+   BOTÃO RASTREIO
+========================= */
+.btn-rastreio {
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    border: 1px solid var(--primary);
+    border-radius: 999px;
+
+    color: var(--primary);
+
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+}
+
+.btn-rastreio:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+    height: 100vh;
+
+    padding-top: 82px;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
+        url('../img/hero_banner.png');
+
+    background-size: cover;
+    background-position: top center;
+
+    display: flex;
+    align-items: center;
+
+    color: var(--text-light);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+
+    font-size: 5.2rem;
+    line-height: 1;
+
+    margin-bottom: 28px;
+
+    font-weight: 600;
+}
+
+.hero p {
+    font-size: 1.35rem;
+    font-weight: 300;
+
+    max-width: 620px;
+
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: inline-block;
+
+    background: var(--primary);
+    color: #fff;
+
+    padding: 18px 42px;
+
+    border-radius: 999px;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================
+   SOBRE
+========================= */
+.about {
+    padding: 70px 0 40px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 55px;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-family: var(--font-heading);
+
+    font-size: 4rem;
+
+    color: var(--primary);
+
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    color: var(--text-muted);
+
+    margin-bottom: 18px;
+}
+
+/* =========================
+   FOTO EDITORIAL
+========================= */
+.editorial-banner {
+    padding: 10px 0 45px;
+}
+
+.editorial-banner .container {
+    position: relative;
+}
+
+.editorial-banner img {
+    width: 100%;
+    height: 520px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+}
+
+/* sombra sobre imagem */
+.editorial-banner .container::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.05)
+        );
+}
+
+/* texto editorial */
+.editorial-text {
+    position: absolute;
+
+    left: 40px;
+    bottom: 40px;
+
+    z-index: 2;
+
+    max-width: 460px;
+
+    color: #fff;
+}
+
+.editorial-text h2 {
+    font-family: var(--font-heading);
+
+    font-size: 3.1rem;
+    line-height: 1.05;
+
+    margin-bottom: 14px;
+}
+
+.editorial-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+
+    color: rgba(255,255,255,0.92);
+}
+
+/* =========================
+   COLEÇÃO
+========================= */
+.collection {
+    padding: 60px 0 70px;
+}
+
+/* título seção */
+.section-title {
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-family: var(--font-heading);
+
+    font-size: 4rem;
+
+    color: var(--primary);
+
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: var(--text-muted);
+}
+
+/* grid produtos */
+.product-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(340px, 1fr));
+
+    gap: 22px;
+}
+
+/* card */
+.product-card {
+    background: #fff;
+
+    transition: var(--transition);
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+/* imagem */
+.product-image {
+    position: relative;
+
+    height: 500px;
+
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+/* tag */
+.exclusive-tag {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    background: var(--primary);
+    color: #fff;
+
+    padding: 8px 14px;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+/* infos */
+.product-info {
+    padding: 22px 0;
+}
+
+.product-info h3 {
+    font-family: var(--font-heading);
+
+    font-size: 2rem;
+
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    color: var(--primary);
+
+    margin-bottom: 12px;
+}
+
+/* detalhes dropdown */
+.details-dropdown {
+    margin: 12px 0 18px;
+}
+
+.details-dropdown summary {
+    cursor: pointer;
+
+    font-weight: 600;
+
+    list-style: none;
+}
+
+.details-dropdown summary::-webkit-details-marker {
+    display: none;
+}
+
+.details-dropdown summary::after {
+    content: " +";
+}
+
+.details-dropdown[open] summary::after {
+    content: " −";
+}
+
+.details-dropdown p {
+    margin-top: 10px;
+
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    color: var(--text-muted);
+}
+
+/* botão comprar */
+.btn-buy {
+    display: inline-block;
+
+    width: 100%;
+
+    background: var(--accent);
+    color: #fff;
+
+    padding: 15px;
+
+    border-radius: 999px;
+
+    text-align: center;
+
+    font-size: 0.78rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background-color 0.22s ease;
+}
+
+.btn-buy:hover {
+    background: #25D366;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(37, 211, 102, 0.28);
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+.whatsapp-float {
+    position: fixed;
+
+    right: 35px;
+    bottom: 35px;
+
+    width: 64px;
+    height: 64px;
+
+    background: #25D366;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.25);
+
+    z-index: 1000;
+}
+
+.whatsapp-float img {
+    width: 34px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--bg-dark);
+
+    color: rgba(255,255,255,0.75);
+
+    padding: 70px 0 35px;
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr 1fr;
+
+    gap: 55px;
+
+    margin-bottom: 50px;
+}
+
+.footer-brand img {
+    height: 140px;
+
+    margin-bottom: 25px;
+}
+
+.footer-title {
+    font-family: var(--font-heading);
+
+    font-size: 1.8rem;
+
+    color: var(--secondary);
+
+    margin-bottom: 20px;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: var(--secondary);
+
+    transform: translateX(4px);
+}
+
+.footer-contact p {
+    margin-bottom: 12px;
+}
+
+.footer-phrase {
+    text-align: center;
+
+    padding: 40px 0;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    margin-bottom: 30px;
+}
+
+.footer-phrase p {
+    font-family: var(--font-heading);
+
+    font-size: 2rem;
+    font-style: italic;
+
+    color: var(--secondary);
+}
+
+.footer-bottom {
+    text-align: center;
+
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+
+    /* menu */
+    .nav-links {
+        display: none;
+    }
+
+    /* hero */
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* grids */
+    .about-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-grid {
+        gap: 35px;
+    }
+
+    .footer-grid {
+        text-align: center;
+
+        gap: 35px;
+    }
+
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* espaçamentos */
+    .about {
+        padding: 45px 0 25px;
+    }
+
+    .collection {
+        padding: 45px 0 50px;
+    }
+
+    .editorial-banner {
+        padding: 0 0 25px;
+    }
+
+    .section-title {
+        margin-bottom: 30px;
+    }
+
+    /* editorial */
+    .editorial-banner img {
+        height: 420px;
+    }
+
+    .editorial-text {
+        left: 22px;
+        right: 22px;
+        bottom: 28px;
+
+        max-width: 100%;
+    }
+
+    .editorial-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .editorial-text p {
+        font-size: 0.95rem;
+    }
+
+    /* produtos */
+    .product-grid {
+        gap: 18px;
+    }
+
+    .product-image {
+        height: 440px;
+    }
+
+    /* footer */
+    footer {
+        padding: 50px 0 30px;
+    }
+}
+
+/* ========================================
+   EFEITO NAS FOTOS DOS PRODUTOS
+======================================== */
+
+.product-card {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition:
+        transform 0.6s ease,
+        filter 0.4s ease;
+}
+
+/* zoom suave na foto */
+.product-card:hover .product-image img {
+    transform: scale(1.06);
+    filter: brightness(1.03);
+}
+
+/* sobe o card inteiro */
+.product-card {
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.10);
+}
+
+/* ========================================
+   BOTÃO WHATSAPP ANIMADO
+======================================== */
+
+.btn-buy {
+    display: inline-block;
+    width: 100%;
+
+    background-color: var(--accent);
+    color: #fff;
+
+    padding: 15px;
+    text-align: center;
+
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.78rem;
+
+    border-radius: 999px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+/* efeito hover */
+.btn-buy:hover {
+    background-color: #25D366;
+
+    transform:
+        translateY(-2px)
+        scale(1.02);
+
+    box-shadow:
+        0 10px 24px rgba(37, 211, 102, 0.30);
+
+    animation: buyShake 0.30s ease-in-out 2;
+}
+
+/* tremidinha */
+@keyframes buyShake {
+
+    0% {
+        transform:
+            translateY(-2px)
+            translateX(0)
+            scale(1.02);
+    }
+
+    25% {
+        transform:
+            translateY(-2px)
+            translateX(-2px)
+            scale(1.02);
+    }
+
+    50% {
+        transform:
+            translateY(-2px)
+            translateX(2px)
+            scale(1.02);
+    }
+
+    75% {
+        transform:
+            translateY(-2px)
+            translateX(-2px)
+            scale(1.02);
+    }
+
+    100% {
+        transform:
+            translateY(-2px)
+            translateX(0)
+            scale(1.02);
+    }
+}
+
+/* ========================================
+   EFEITO NOS LINKS DO MENU
+======================================== */
+
+.nav-links a,
+.footer-links a,
+.footer-contact a {
+    display: inline-block;
+
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+}
+
+/* movimento ao passar mouse */
+.nav-links a:hover,
+.footer-links a:hover,
+.footer-contact a:hover {
+    transform: translateY(-3px);
+}
