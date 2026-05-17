@@ -1,25 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const countdownHours = document.querySelector('[data-countdown-hours]');
+    const countdownMinutes = document.querySelector('[data-countdown-minutes]');
+    const countdownSeconds = document.querySelector('[data-countdown-seconds]');
+
+    if (countdownHours && countdownMinutes && countdownSeconds) {
+        const campaignDuration = 10 * 60 * 60;
+        const savedEnd = Number(localStorage.getItem('nanavesteCampaignEnd'));
+        let campaignEnd = savedEnd && savedEnd > Date.now()
+            ? savedEnd
+            : Date.now() + campaignDuration * 1000;
+
+        localStorage.setItem('nanavesteCampaignEnd', String(campaignEnd));
+
+        const renderCountdown = () => {
+            let remaining = Math.max(0, Math.floor((campaignEnd - Date.now()) / 1000));
+
+            if (remaining === 0) {
+                campaignEnd = Date.now() + campaignDuration * 1000;
+                localStorage.setItem('nanavesteCampaignEnd', String(campaignEnd));
+                remaining = campaignDuration;
+            }
+
+            const hours = Math.floor(remaining / 3600);
+            const minutes = Math.floor((remaining % 3600) / 60);
+            const seconds = remaining % 60;
+
+            countdownHours.textContent = String(hours).padStart(2, '0');
+            countdownMinutes.textContent = String(minutes).padStart(2, '0');
+            countdownSeconds.textContent = String(seconds).padStart(2, '0');
+        };
+
+        renderCountdown();
+        setInterval(renderCountdown, 1000);
+    }
+
     // Menu Mobile
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
-            const isActive = navLinks.classList.toggle('active');
-            if (isActive) {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.backgroundColor = 'rgba(253, 251, 247, 0.98)';
-                navLinks.style.padding = '40px 20px';
-                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.05)';
-                navLinks.style.textAlign = 'center';
-            } else {
-                navLinks.style.display = 'none';
-            }
+            navLinks.classList.toggle('active');
         });
     }
 
@@ -29,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
+                navLinks.classList.remove('active');
                 window.scrollTo({
                     top: target.offsetTop - 80,
                     behavior: 'smooth'
@@ -37,15 +59,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Efeito de transparência no header ao rolar
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.padding = '10px 0';
-            header.style.backgroundColor = 'rgba(253, 251, 247, 0.98)';
-        } else {
-            header.style.padding = '20px 0';
-            header.style.backgroundColor = 'rgba(253, 251, 247, 0.95)';
-        }
-    });
+    // Mantem o header estavel; a aparencia fixa dele fica no CSS.
 });
